@@ -1,0 +1,9 @@
+[user]
+	name = fathiabdelmalek
+	email = abdelmalek.fathi.2001@gmail.com
+[credential]
+	helper = store
+[core]
+	compression = 9
+[init]
+	defaultBranch = main
