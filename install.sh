@@ -17,8 +17,8 @@ sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-releas
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf update -y
-sudo dnf install -y htop neofetch stow neovim nodejs pnpm docker-ce docker-ci-cli docker-buildx-plugin docker-compose-plugin sqlitebrowser texstudio qt5-designer
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install -y htop fastfetch stow vim neovim nodejs pnpm docker-ce docker-ci-cli containerd.io docker-buildx-plugin docker-compose-plugin sqlitebrowser texstudio remote-add
 
 # Create symbolic links for dotfiles
 stow */
@@ -52,9 +52,9 @@ sudo npm install -y typescript eslint
 if [ ! -d "$HOME/jetbrains-toolbox" ]; then
     echo "Installing JetBrains Toolbox..."
     wget -O ~/jetbrains-toolbox.tar.gz https://data.services.jetbrains.com/products/download?code=TBA&platform=linux
-    mkdir ~/jetbrains-toolbox
-    tar -xzf ~/jetbrains-toolbox.tar.gz -C ~/jetbrains-toolbox --strip-components=1
-    ~/jetbrains-toolbox/jetbrains-toolbox
+    sudo mkdir /opt/jetbrains-toolbox
+    tar -xzf ~/jetbrains-toolbox.tar.gz -C /opt/jetbrains-toolbox --strip-components=1
+    /opt/jetbrains-toolbox/jetbrains-toolbox
     rm ~/jetbrains-toolbox.tar.gz
 else
     echo "JetBrains Toolbox is already installed."

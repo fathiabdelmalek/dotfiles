@@ -1,9 +1,19 @@
 [user]
-	name = fathiabdelmalek
+	name = Fathi Abdelmalek
 	email = abdelmalek.fathi.2001@gmail.com
-[credential]
+[credentials]
 	helper = store
 [core]
 	compression = 9
+    editor = vim
+    autocrlf = input
+[color]
+    ui = auto
 [init]
 	defaultBranch = main
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    cm = commit
+    lg = log --oneline --graph --decorate --all
