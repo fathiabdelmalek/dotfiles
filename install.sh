@@ -18,11 +18,11 @@ sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf update -y
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install -y htop fastfetch stow vim neovim nodejs pnpm docker-ce docker-ci-cli containerd.io docker-buildx-plugin docker-compose-plugin sqlitebrowser texstudio remote-add
+sudo dnf install -y htop fastfetch stow vim neovim nodejs pnpm docker-ce docker-ci-cli containerd.io docker-buildx-plugin docker-compose-plugin sqlitebrowser texstudio remote-add thunderbird nextcloud-desktop
 
 # Create symbolic links for dotfiles
 stow */
-echo $TOKEN > ~/.git-credentials
+echo $GIT_TOKEN > ~/.git-credentials
 
 # Configure docker
 if [ ! getent group docker  &> /dev/null ]; then
@@ -45,7 +45,7 @@ fi
 
 # Install and configure nodejs
 sudo dnf install -y node
-sudo npm install -y typescript eslint
+sudo npm install -g -y typescript eslint
 
 # Install essential applications
 # Jetbrains Toolbox
@@ -59,19 +59,23 @@ if [ ! -d "$HOME/jetbrains-toolbox" ]; then
 else
     echo "JetBrains Toolbox is already installed."
 fi
+
 # VS Code
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 sudo dnf check-update
 sudo dnf install -y code
+
 # Google Chrome
 sudo dnf install -y fedora-workstation-repositories
 sudo dnf config-manager --set-enabled google-chrome
 sudo dnf install -y google-chrome-stable
+
 # Scene Builder
 wget https://download2.gluonhq.com/scenebuilder/19.0.0/install/linux/SceneBuilder-19.0.0.rpm
 sudo dnf install -y SceneBuilder-19.0.0.rpm
 rm SceneBuilder-19.0.0.rpm
+
 # Insomnia
 echo "[insomnia]
 name=Insomnia
@@ -80,6 +84,15 @@ enabled=1
 gpgcheck=1
 gpgkey=https://download.konghq.com/insomnia/rpm/repomd.xml.key" | sudo tee -a /etc/yum.repos.d/insomnia.repo
 sudo dnf install -y insomnia
+
+# ngrok
+curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
+  | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
+  && echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \
+  | sudo tee /etc/apt/sources.list.d/ngrok.list \
+  && sudo apt update \
+  && sudo apt install ngrok
+ngrok config add-authtoken $NGROK_TOKEN
 
 # Clean up installation files
 sudo dnf autoremove -y

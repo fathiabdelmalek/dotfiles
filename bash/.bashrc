@@ -29,17 +29,10 @@ unset rc
 
 
 # aliases
-
-alias .='cd'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias dev='cd $HOME/dev'
-alias docs='cd $HOME/Documents'
-alias downs='cd $HOME/Downloads'
-
 alias la='ls -lha --color=auto'
 alias o='xdg-open'
+alias top='top -U $USER'
+alias htop='htop -u'
 
 alias myip='curl ifconfig.me'
 
@@ -48,24 +41,28 @@ alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push'
 alias gl='git pull'
-
-alias dps='docker ps'
-alias dcu='docker-compose up -d'
-alias dcd='docker-compose down'
-alias dexec='docker exec -it'
+alias gh='git checkout'
+alias gm='git merge'
+alias gr='git reset'
 
 alias py='python'
 alias pyenv='python -m venv .venv'
 alias uvr='uv run'
-alias pmm='py manage.py makemigrations'
-alias pmg='py manage.py migrate'
-alias pmu='py manage.py createsuperuser'
-alias pmr='py manage.py runserver 0.0.0.0:8000'
-alias pmc='py manage.py collectstatic'
+alias pmm='python manage.py makemigrations'
+alias pmg='python manage.py migrate'
+alias pmu='python manage.py createsuperuser'
+alias pmr='python manage.py runserver'
+alias pmc='python manage.py collectstatic'
+alias pmf='python manage.py flush'
+alias pmt='python manage.py tailwind'
+alias pipi='pip install -r requirements.txt'
+alias pipf='pip freeze | xargs pip uninstall -y'
+alias ali='alembic init alembic'
+alias alr='alembic revision --autogenerate -m'
+alias alu='alembic upgrade head'
 
 
 # functions
-
 mkcd () {
 	mkdir -p "$1"
 	cd "$1"
@@ -137,4 +134,4 @@ cd () {
     builtin cd "$@" || return
     auto_venv
 }
-
+. "$HOME/.cargo/env"
