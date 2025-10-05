@@ -58,6 +58,8 @@ alias pmf='python manage.py flush'
 alias pml='python manage.py makemessages -a'
 alias pmi='python manage.py compilemessages'
 alias pmt='python manage.py tailwind'
+alias pmtd='python manage.py tailwind dev'
+alias pmtb='python manage.py tailwind build'
 alias pipf='pip freeze > requirements.txt'
 alias pipi='pip install'
 alias pipu='pip freeze | xargs pip uninstall -y'
@@ -65,6 +67,8 @@ alias pipir='pip install -r requirements.txt'
 alias ali='alembic init alembic'
 alias alr='alembic revision --autogenerate -m'
 alias alu='alembic upgrade head'
+
+alias wait='docker run -it --rm bcbcarl/hollywood'
 
 
 # functions
