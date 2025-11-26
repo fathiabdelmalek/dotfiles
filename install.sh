@@ -76,14 +76,10 @@ wget https://download2.gluonhq.com/scenebuilder/19.0.0/install/linux/SceneBuilde
 sudo dnf install -y SceneBuilder-19.0.0.rpm
 rm SceneBuilder-19.0.0.rpm
 
-# Insomnia
-echo "[insomnia]
-name=Insomnia
-baseurl=https://download.konghq.com/insomnia/rpm/$basearch/
-enabled=1
-gpgcheck=1
-gpgkey=https://download.konghq.com/insomnia/rpm/repomd.xml.key" | sudo tee -a /etc/yum.repos.d/insomnia.repo
-sudo dnf install -y insomnia
+# Postman
+wget https://dl.pstmn.io/download/latest/linux_64
+tar -xz postman-linux-x64.tar.gz
+sudo cp postman-linux-x64/Postman /opt/Postman
 
 # ngrok
 curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
