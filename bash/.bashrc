@@ -47,6 +47,7 @@ alias gr='git reset'
 
 alias py='python'
 alias pyenv='python -m venv .venv && source .venv/bin/activate'
+alias pys='python setup.py sdist bdist_wheel'
 alias pm='python manage.py'
 alias pmm='python manage.py makemigrations'
 alias pmg='python manage.py migrate'
@@ -107,7 +108,6 @@ extract () {
 cleanall () {
 	echo "🧹 Cleaning temporary files..."
 	rm -rf /tmp/* ~/.cache/thumbnails/ ~/.cache/pip/ ~/.cache/npm/ ~/.cache/fastfetch/ ~/.cache/flatpak/
-	sudo dnf clean all -y
 	sudo journalctl --vacuum-time=7d
 	echo "✅ Done. Clearing terminal..."
 	clear
@@ -141,7 +141,7 @@ passgen () {
 
 function auto_venv () {
     if [ -f ".venv/bin/activate" ]; then
-        source .venv/bin/activate
+        source .venv/bin/activate  # commented out by conda initialize
     fi
 }
 
@@ -150,3 +150,20 @@ cd () {
     auto_venv
 }
 . "$HOME/.cargo/env"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/fathi/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/fathi/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/fathi/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/fathi/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
