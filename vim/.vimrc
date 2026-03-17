@@ -1,6 +1,6 @@
 " ===== Minimal Vim Config =====
 
-Enable line numbers
+" Enable line numbers
 set number
 set relativenumber
 

@@ -44,6 +44,7 @@ alias gl='git pull'
 alias gh='git checkout'
 alias gm='git merge'
 alias gr='git reset'
+alias gt='git log --all --decorate --oneline --graph'
 
 alias py='python'
 alias pyenv='python -m venv .venv && source .venv/bin/activate'
@@ -70,9 +71,16 @@ alias alr='alembic revision --autogenerate -m'
 alias alu='alembic upgrade head'
 alias uvi='uv init'
 alias uva='uv add'
+alias uvp='uv pip'
+alias uvpi='uv pip install'
 alias uvr='uv run'
+alias uvrp='uv run pythom -m'
 alias uvs='uv sync'
 alias uvv='uv venv'
+
+alias ol='ollama'
+alias olr='ollama run'
+alias oll='ollama launch'
 
 
 alias wait='docker run -it --rm bcbcarl/hollywood'
@@ -167,3 +175,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+eval "$(starship init bash)"
+
+# opencode
+export PATH=/home/fathi/.opencode/bin:$PATH
