@@ -144,6 +144,23 @@ else
     warn "uv already installed, skipping."
 fi
 
+# --- Anaconda ---------------------------------------------------------------
+ANACONDA_DIR="$HOME/.anaconda3"
+if [ -f "$ANACONDA_DIR/bin/conda" ]; then
+    warn "Anaconda already installed, skipping."
+else
+    log "Installing Anaconda..."
+    ANACONDA_INSTALLER="$(mktemp --suffix=.sh)"
+    if download "https://repo.anaconda.com/archive/Anaconda3-latest-Linux-x86_64.sh" "$ANACONDA_INSTALLER" "Anaconda"; then
+        bash "$ANACONDA_INSTALLER" -b -p "$ANACONDA_DIR"
+        rm -f "$ANACONDA_INSTALLER"
+        success "Anaconda installed."
+    else
+        rm -f "$ANACONDA_INSTALLER"
+        warn "Anaconda download failed, skipping."
+    fi
+fi
+
 # --- Rust & Cargo (via rustup) -----------------------------------------------
 if command -v rustc &>/dev/null && command -v cargo &>/dev/null; then
     warn "Rust and Cargo already installed, skipping."
