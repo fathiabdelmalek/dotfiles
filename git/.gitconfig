@@ -1,5 +1,5 @@
 [user]
-	name = Fathi Abdelmalek
+	name = fathiabdelmalek
 	email = abdelmalek.fathi.2001@gmail.com
 [credentials]
 	helper = store
@@ -17,3 +17,5 @@
     br = branch
     cm = commit
     lg = log --oneline --graph --decorate --all
+[credential]
+	helper = store

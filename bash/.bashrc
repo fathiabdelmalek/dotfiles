@@ -34,6 +34,8 @@ alias o='xdg-open'
 alias top='top -U $USER'
 alias htop='htop -u'
 
+alias copy='wl-copy <'
+
 alias myip='curl ifconfig.me'
 
 alias gs='git status'
