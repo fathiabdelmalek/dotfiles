@@ -38,14 +38,16 @@ alias copy='wl-copy <'
 
 alias myip='curl ifconfig.me'
 
+alias gi='git init'
 alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push'
 alias gl='git pull'
-alias gh='git checkout'
+alias gb='git checkout'
 alias gm='git merge'
-alias gr='git reset'
+alias gf='git reset'
+alias gr='git remote add'
 alias gt='git log --all --decorate --oneline --graph'
 
 alias py='python'
@@ -76,7 +78,7 @@ alias uva='uv add'
 alias uvp='uv pip'
 alias uvpi='uv pip install'
 alias uvr='uv run'
-alias uvrp='uv run pythom -m'
+alias uvrp='uv run python -m'
 alias uvs='uv sync'
 alias uvv='uv venv'
 
@@ -173,3 +175,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+export PATH="/home/fathi/.flutter/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# OpenClaw Completion
+source "/home/fathi/.openclaw/completions/openclaw.bash"
