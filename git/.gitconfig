@@ -1,6 +1,7 @@
 [user]
-	name = fathiabdelmalek
+	name = Fathi Abdelmalek
 	email = abdelmalek.fathi.2001@gmail.com
+	signingkey = 81A34EDBD70074FD
 [credentials]
 	helper = store
 [core]
@@ -19,3 +20,5 @@
     lg = log --oneline --graph --decorate --all
 [credential]
 	helper = store
+[commit]
+	gpgsign = true
